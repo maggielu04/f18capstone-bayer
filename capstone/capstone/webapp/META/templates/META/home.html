@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul>
+    <li>
+      <a href="{% url 'model_form_upload' %}">File Upload</a>
+    </li>
+  </ul>
+
+  <p>Uploaded files:</p>
+  <ul>
+    {% for obj in documents %}
+      <li>
+        <form method = "post">
+        <a href="{{ obj.document.url }}">{{ obj.document.name }}</a>
+        <small>(Uploaded at: {{ obj.uploaded_at }})</small>
+          {% csrf_token %}
+          <button type="submit">Analyse</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

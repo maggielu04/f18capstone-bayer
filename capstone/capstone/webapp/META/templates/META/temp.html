@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <p>Uploaded File Content:</p>
+  <ul>
+    {% for obj in document %}
+      <li>    
+        <a href="{{ obj.document.url }}">{{ obj.document.name }}</a> 
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
