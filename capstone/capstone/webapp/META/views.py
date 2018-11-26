@@ -5,6 +5,9 @@ from django.core.files.storage import FileSystemStorage
 from webapp.META.models import Document
 from webapp.META.forms import DocumentForm
 
+from .models import Document, DocumentEntry
+from .forms import UploadFileForm
+
 
 def home(request):
     documents = Document.objects.all()
