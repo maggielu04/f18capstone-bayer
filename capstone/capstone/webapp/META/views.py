@@ -36,8 +36,20 @@ def model_form_upload(request):
     })
 
 def analyse_document(request):
-    if request.method == "POST":
-        document = request.FILES
-        return render(request, 'META/temp.html', {
-            'document': document
-        })
+    f request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+
+            handle_files(request.FILES['docfile'])
+
+            return HttpResponseRedirect(reverse('process_files'))
+    else:
+        form = UploadFileForm()  
+
+    documents = Document.objects.all()
+
+    return render(
+        request,
+        'META/processed_files.html',
+        {'documents': documents, 'form': form}
+    )
