@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <p>File Content:</p>
+  <ul>
+      <li>    
+        {% for i in document %}
+    		{{ i }}
+		{% endfor %} 
+      </li>
+  </ul>
+{% endblock %}
